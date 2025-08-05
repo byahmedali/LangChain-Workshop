@@ -6,11 +6,8 @@ from dotenv import load_dotenv
 # Load the .env file
 load_dotenv()
 
-# Get API key
-api_key = os.getenv("GOOGLE_API_KEY")
-
 # Initialize Gemini model
-chat = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature =  0.3, google_api_key=api_key)
+chat = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.3)
 
 # Start a loop to chat
 print("Chatbot: Hello! Ask me anything. Type 'exit' to stop.")
@@ -19,4 +16,4 @@ while True:
     if user_input.lower() in ["exit", "quit"]:
         break
     response = chat.invoke([HumanMessage(content=user_input)])
-    print("Chatbot:", response.content)
+    print("\n Chatbot: ", response.content)
